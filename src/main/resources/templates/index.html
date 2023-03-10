@@ -6,8 +6,8 @@
     </head>
     <body>
         <h1>Clientes Totales: <span th:text="${clientes.size()}"></span></h1>        
-        <div th:if="${clientes !=null and !clientes.empty}"></div>
-        <table border=""1">
+        <div th:if="${clientes != null and !clientes.empty}"></div>
+        <table border="1">
             <tr>
                 <th>Nombre</th>
                 <th>Apellidos</th>
@@ -21,7 +21,7 @@
                 <td th:text="${cliente.telefono}"></td>
             </tr>
         </table>
-        <div th:if="${clientes ==null or clientes.empty}">
+        <div th:if="${clientes == null or clientes.empty}">
             La lista de clientes está vacía
         </div>
     </body>
