@@ -20,9 +20,6 @@ public class IndexController {
     public String inicio(Model model) {
         log.info("Ahora se usa arquitectura MVC");
 
-             
-        //Cliente cliente1 = new Cliente("Sebastian", "Corrales Gutierrez", "scorrales@gmail.com", "60081259");
-        //Cliente cliente2 = new Cliente("Pedro", "Martinez Lopez", "plopezm@mail.com", "74859632");
 
         var clientes = clienteDao.findAll();
         model.addAttribute("clientes", clientes);
