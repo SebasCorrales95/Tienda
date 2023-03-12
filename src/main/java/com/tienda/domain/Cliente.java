@@ -13,7 +13,8 @@ public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idCliente;
+    @Column(name="id_cliente")
+    private Long idCliente;
     String nombre;
     String apellidos;
     String correo;

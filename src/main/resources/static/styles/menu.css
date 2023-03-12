@@ -72,10 +72,10 @@ body {
 
 .contenido {
     background-color: wheat;
+    position: fixed;
     top: 80px;    
     bottom: 20px;
-    position: fixed;
+    left: 0;
     width: 100%;
     overflow: auto;
-
 }

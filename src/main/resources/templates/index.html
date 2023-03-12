@@ -10,23 +10,26 @@
         <div class="contenido">
             <h2>Nuestros Articulos</h2>            
             <div th:if="${articulos != null and !articulos.empty}">
-            <table border="1">
-                <tr>
-                    <th>Descripcion</th>
-                    <th>Precio</th>
-                    <th>Comprar</th>
-                </tr>
-                <tr th:each="articulo : ${articulos}"> 
-                    <td th:text="${articulo.descripcion}"></td>
-                    <td th:text="${articulo.precio}"></td>
-                    <td><a th:href="@{/carrito/agregar/} +${articulo.idArticulo}">Agregar</a></td>
-                </tr>
-            </table>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Precio</th>                                                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="articulo : ${articulos}"> 
+                            <td th:text="${articulo.descripcion}"></td>
+                            <td th:text="${#numbers.formatDecimal(articulo.precio,3,2)}" style="text-align: right"></td>
+                            <td><a th:href="@{/carrito/agregar/} +${articulo.idArticulo}">Agregar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${articulos == null or articulos.empty}">
+                La lista de articulos está vacía
+            </div>
         </div>
-        <div th:if="${articulos == null or articulos.empty}">
-            La lista de articulos está vacía
-        </div>
-    </div>
-    <footer th:replace="layout/plantilla :: footer"/>
-</body>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
 </html>

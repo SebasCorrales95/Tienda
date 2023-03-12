@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 import com.tienda.service.ArticuloService;
 import com.tienda.domain.Articulo;
+import com.tienda.service.CategoriaService;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -15,6 +16,9 @@ public class ArticuloController {
 
     @Autowired
     private ArticuloService articuloService;
+    
+    @Autowired
+    private CategoriaService categoriaService;
 
     @GetMapping("/articulo/listado")
     public String inicio(Model model) {
@@ -24,8 +28,10 @@ public class ArticuloController {
     }
 
     @GetMapping("/articulo/nuevo")
-    public String nuevoArticulo(Articulo articulo) {
-        return "/articulo/modificar";
+    public String nuevoArticulo (Articulo articulo, Model model){
+        var categorias = categoriaService.getCategorias(true);
+        model.addAttribute("categorias", categorias);
+        return "articulo/modificar";
     }
 
     @PostMapping("/articulo/guardar")
@@ -37,6 +43,8 @@ public class ArticuloController {
     @GetMapping("/articulo/modificar/{idArticulo}")
     public String modificarArticulo(Articulo articulo, Model model) {
         articulo = articuloService.getArticulo(articulo);
+        var categorias = categoriaService.getCategorias(true);
+        model.addAttribute("categorias", categorias);
         model.addAttribute("articulo", articulo);
         return "/articulo/modificar";
     }

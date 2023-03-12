@@ -13,7 +13,6 @@ public class Articulo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_articulo")
     private Long idArticulo;
     private Long idCategoria;
     private String descripcion;

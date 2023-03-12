@@ -14,6 +14,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     private ClienteDao clienteDao;
+    
     @Autowired
     private CreditoDao creditoDao;
     
